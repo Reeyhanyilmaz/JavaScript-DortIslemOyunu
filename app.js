@@ -51,7 +51,6 @@ window.onload = function () {
 
 //cevapla butonuna basıldığında değerlendirme işlemi yapma
 answer.onclick = function () {
-  alrtFunc();
   var ans, n1, n2;
   n1 = Number(Number1.textContent);
   n2 = Number(Number2.textContent);
@@ -71,6 +70,7 @@ answer.onclick = function () {
     default:
       break; //hicbiri degilse cık programdan
   }
+
   if (result.value == ans) {
     True.textContent = Number(True.textContent) + 1; //number veri türüne cevir true span'ının içine yaz
   } else {
@@ -78,22 +78,12 @@ answer.onclick = function () {
   } 
   result.value = ""; //her sorudan sonra input'u temizledik. 
   newQuestion(); //doğru yanlıştan sonra newQ. func. çalıştır.
+  
 };
 
-//enter tuşu ilede işlemi yaptırmamız için
+//enter tuşu ile de işlemi yaptırmamız için.
 result.onkeydown = function (e) {
   if (e.keyCode === 13) { //keycode 13 enter tusu anlamına gelir
-    answer.click();   
+    answer.click();  
   }
 };
-
-//boş veya sayı girmediğimizde uyarı versin. ÇALIŞMADI BUNA BAKICAM
-function alrtFunc(){
-    if (result.value == "" && result.value == " " && result.value != Number){
-        confirm("Bir rakam giriniz!")
-    } else {
-        newQuestion();
-    }
-};
-
-
